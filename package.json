@@ -1,0 +1,35 @@
+{
+  "name": "rn-country-code-picker",
+  "version": "1.0.0",
+  "description": "react native country code picker with a modal, in typescript.",
+  "main": "./country-code-picker/country-code-picker.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "react": "18.2.0~",
+    "react-native": "0.72.7~",
+    "react-native-svg": "^13.9.0",
+    "react-native-svg-transformer": "^1.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShellyAmbar/react-native-country-code-picker.git"
+  },
+  "keywords": [
+    "countrycode",
+    "country",
+    "code",
+    "codes",
+    "countries",
+    "country-code",
+    "country-code-modal",
+    "country-codes"
+  ],
+  "author": "Shelly Ambar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShellyAmbar/react-native-country-code-picker/issues"
+  },
+  "homepage": "https://github.com/ShellyAmbar/react-native-country-code-picker#readme"
+}

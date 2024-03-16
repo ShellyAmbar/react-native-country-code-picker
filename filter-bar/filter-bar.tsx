@@ -1,11 +1,16 @@
-import React from 'react';
-import style from './filter-bar.styles';
-import { TextInput, TouchableOpacity, View } from 'react-native';
-import Delete from '../assets/images/closeIconWhite.svg';
-import SearchBarProps from './interfaces';
-import useSearchBar from './hooks/useSearchBar';
-const FilterBar = ({ onUpdateSearchTerm, onPressDelete }: SearchBarProps) => {
-  const { searchTerm, setSearchTerm } = useSearchBar();
+import React from "react";
+import createStyle from "./filter-bar.styles";
+import {TextInput, TouchableOpacity, View} from "react-native";
+import Delete from "../assets/images/closeIconWhite.svg";
+import FilterBarProps from "./interfaces";
+import useSearchBar from "./hooks/useSearchBar";
+const FilterBar = ({
+  onUpdateSearchTerm,
+  onPressDelete,
+  color,
+}: FilterBarProps) => {
+  const {searchTerm, setSearchTerm} = useSearchBar();
+  const style = createStyle({color});
   return (
     <View style={style.container}>
       <View style={style.searchbar}>
@@ -13,8 +18,8 @@ const FilterBar = ({ onUpdateSearchTerm, onPressDelete }: SearchBarProps) => {
           <TouchableOpacity
             onPress={() => {
               onPressDelete();
-              onUpdateSearchTerm('');
-              setSearchTerm('');
+              onUpdateSearchTerm("");
+              setSearchTerm("");
             }}
             style={style.delete_icon}
           >
@@ -24,11 +29,11 @@ const FilterBar = ({ onUpdateSearchTerm, onPressDelete }: SearchBarProps) => {
         <TextInput
           style={style.input}
           value={searchTerm}
-          onEndEditing={v => {
+          onEndEditing={(v) => {
             setSearchTerm(v.nativeEvent.text);
             onUpdateSearchTerm(v.nativeEvent.text);
           }}
-          onChangeText={v => {
+          onChangeText={(v) => {
             setSearchTerm(v);
             onUpdateSearchTerm(v);
           }}
