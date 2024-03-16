@@ -36,13 +36,13 @@ const CountryCodePicker = ({
     setFilteredCountriesData,
   } = useCountryCodePicker();
 
-  const renderItem = (item: Country) => {
+  const renderItem = (item) => {
     return (
       <TouchableOpacity
         style={Style.item}
         onPress={() => {
           setSelectedCountry(item), setIsOpen(false);
-          onPickedCode(item.alpha2Code.toString());
+          onPickedCode("+" + item.callingCodes[0].toString());
         }}
       >
         <SvgUri
@@ -59,7 +59,10 @@ const CountryCodePicker = ({
   return (
     <>
       <TouchableOpacity
-        onPress={() => setIsOpen(true)}
+        onPress={() => {
+          setIsOpen(true);
+          setFilteredCountriesData(countriesData);
+        }}
         style={{...Style.container, ...pickerStyle}}
       >
         {isOpen ? (
