@@ -14,8 +14,6 @@ import DirectionDown from "../assets/images/direction-down-white.svg";
 import DirectionUp from "../assets/images/direction-up-white.svg";
 import Close from "../assets/images/closeIconWhite.svg";
 import useCountryCodePicker from "./hooks/useCountryCodePicker";
-
-import {Country} from "./hooks/interfaces";
 import {SvgUri} from "react-native-svg";
 import FilterBar from "../filter-bar/filter-bar";
 import Spacer from "../spacer/spacer";
@@ -87,8 +85,8 @@ const CountryCodePicker = ({
 
       <Modal animationType="slide" transparent={true} visible={isOpen}>
         <TouchableWithoutFeedback onPress={() => setIsOpen(false)}>
-          <View style={{...Style.modalBack, ...modalStyle}}>
-            <View style={Style.modal}>
+          <View style={{...Style.modalBack}}>
+            <View style={{...Style.modal, ...modalStyle}}>
               <Close width={20} height={20} />
               <Spacer size={16} />
               <FilterBar

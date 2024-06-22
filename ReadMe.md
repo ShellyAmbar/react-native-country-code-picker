@@ -10,7 +10,7 @@
 ## How to use:
 
 ```
-import CountryCodePicker from 'country-code-picker';
+import CountryCodePicker from 'rn-country-code-picker-modal';
 
     <CountryCodePicker
               onPickedCode={code => {
@@ -19,7 +19,7 @@ import CountryCodePicker from 'country-code-picker';
             />
 ```
 
-# CollapsingScroll Props -
+# CountryCodePicker Props -
 
 | Name           | Type                    | Default |
 | -------------- | ----------------------- | ------- |
