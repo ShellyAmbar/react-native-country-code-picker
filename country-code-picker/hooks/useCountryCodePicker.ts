@@ -14,16 +14,14 @@ const useCountryCodePicker = (defaultCountryName?: string) => {
   });
   useEffect(() => {
     if (defaultCountryName) {
-      const defaultItem = Data.find(
-        (item) =>
-          item.name.toString().toLowerCase() ===
-          defaultCountryName.toString().toLowerCase()
+      const defaultItemIndex = Data.findIndex(
+        (item) => item.name.toLowerCase() === defaultCountryName.toLowerCase()
       );
-      if (defaultItem) {
+      if (defaultItemIndex) {
         setSelectedCountry({
-          name: defaultItem.name,
-          alpha2Code: defaultItem.alpha2Code,
-          flag: defaultItem.flag,
+          name: Data[defaultItemIndex].name,
+          alpha2Code: Data[defaultItemIndex].alpha2Code,
+          flag: Data[defaultItemIndex].flag,
         });
       }
     }
