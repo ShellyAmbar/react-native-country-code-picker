@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import createStyle from "./filter-bar.styles";
 import {TextInput, TouchableOpacity, View, Image, Keyboard} from "react-native";
 import FilterBarProps from "./interfaces";
@@ -10,6 +10,11 @@ const FilterBar = ({
 }: FilterBarProps) => {
   const {searchTerm, setSearchTerm} = useSearchBar();
   const style = createStyle({color});
+  const ref = useRef();
+  useEffect(() => {
+    ref?.current?.focus();
+  }, []);
+
   return (
     <View style={style.container}>
       <View style={style.searchbar}>
@@ -29,6 +34,7 @@ const FilterBar = ({
           </TouchableOpacity>
         )}
         <TextInput
+          ref={ref}
           autoFocus
           focusable
           cursorColor={"#FFF"}
