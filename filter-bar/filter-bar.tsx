@@ -1,6 +1,6 @@
 import React from "react";
 import createStyle from "./filter-bar.styles";
-import {TextInput, TouchableOpacity, View, Image} from "react-native";
+import {TextInput, TouchableOpacity, View, Image, Keyboard} from "react-native";
 import FilterBarProps from "./interfaces";
 import useSearchBar from "./hooks/useSearchBar";
 const FilterBar = ({
@@ -29,6 +29,9 @@ const FilterBar = ({
           </TouchableOpacity>
         )}
         <TextInput
+          autoFocus
+          focusable
+          cursorColor={"#FFF"}
           style={style.input}
           value={searchTerm}
           onEndEditing={(v) => {
