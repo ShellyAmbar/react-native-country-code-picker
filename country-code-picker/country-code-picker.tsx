@@ -20,6 +20,7 @@ const CountryCodePicker = ({
   textStyle,
   onPickedCode,
   filterBarColor,
+  defaultCountryName,
 }: CountryCodePickerProps) => {
   const {
     isOpen,
@@ -29,7 +30,7 @@ const CountryCodePicker = ({
     countriesData,
     filteredCountriesData,
     setFilteredCountriesData,
-  } = useCountryCodePicker();
+  } = useCountryCodePicker(defaultCountryName);
 
   const renderItem = (item) => {
     return (

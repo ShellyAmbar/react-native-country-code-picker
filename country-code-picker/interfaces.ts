@@ -6,6 +6,7 @@ type CountryCodePickerProps = {
   textStyle?: TextStyle;
   onPickedCode: (code: string, name: string) => void;
   filterBarColor?: string;
+  defaultCountryName?: string;
 };
 
 export {CountryCodePickerProps};
