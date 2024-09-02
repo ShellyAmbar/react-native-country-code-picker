@@ -92,37 +92,39 @@ const CountryCodePicker = ({
       </TouchableOpacity>
 
       <Modal animationType="slide" transparent={true} visible={isOpen}>
-        <TouchableWithoutFeedback onPress={() => setIsOpen(false)}>
-          <View style={{...Style.modalBack}}>
-            <View style={{...Style.modal, ...modalStyle}}>
+        <View style={{...Style.modalBack}}>
+          <View style={{...Style.modal, ...modalStyle}}>
+            <TouchableOpacity
+              style={{padding: 10}}
+              onPress={() => setIsOpen(false)}
+            >
               <Image
                 style={{width: 20, height: 20}}
                 source={require("../assets/images/closeIconWhite.png")}
               />
-
-              <Spacer size={16} />
-              <FilterBar
-                color={filterBarColor}
-                onPressDelete={() => {
-                  setFilteredCountriesData(countriesData);
-                }}
-                onUpdateSearchTerm={(t) => {
-                  const filteredList = countriesData.filter((item) =>
-                    item.name.toLowerCase().includes(t.toLowerCase())
-                  );
-                  setFilteredCountriesData(filteredList);
-                }}
-              />
-              <Spacer size={8} />
-              <FlatList
-                data={filteredCountriesData}
-                renderItem={(item) => renderItem(item.item)}
-                keyExtractor={(item) => item.flag}
-                style={Style.list}
-              />
-            </View>
+            </TouchableOpacity>
+            <Spacer size={16} />
+            <FilterBar
+              color={filterBarColor}
+              onPressDelete={() => {
+                setFilteredCountriesData(countriesData);
+              }}
+              onUpdateSearchTerm={(t) => {
+                const filteredList = countriesData.filter((item) =>
+                  item.name.toLowerCase().includes(t.toLowerCase())
+                );
+                setFilteredCountriesData(filteredList);
+              }}
+            />
+            <Spacer size={8} />
+            <FlatList
+              data={filteredCountriesData}
+              renderItem={(item) => renderItem(item.item)}
+              keyExtractor={(item) => item.flag}
+              style={Style.list}
+            />
           </View>
-        </TouchableWithoutFeedback>
+        </View>
       </Modal>
     </>
   );

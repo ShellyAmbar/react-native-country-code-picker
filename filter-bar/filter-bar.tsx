@@ -39,8 +39,6 @@ const FilterBar = ({
         )}
         <TextInput
           ref={ref}
-          autoFocus
-          focusable
           cursorColor={"#FFF"}
           style={style.input}
           value={searchTerm}
