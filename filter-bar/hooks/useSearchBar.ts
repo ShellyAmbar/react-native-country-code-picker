@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import {useState} from "react";
 
 const useSearchBar = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   return {
     searchTerm,
     setSearchTerm,

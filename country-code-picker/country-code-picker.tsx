@@ -10,9 +10,6 @@ import {
 import React from "react";
 import {CountryCodePickerProps} from "./interfaces";
 import Style from "./country-code-picker.styles";
-import DirectionDown from "../assets/images/direction-down-white.svg";
-import DirectionUp from "../assets/images/direction-up-white.svg";
-import Close from "../assets/images/closeIconWhite.svg";
 import useCountryCodePicker from "./hooks/useCountryCodePicker";
 import {SvgUri} from "react-native-svg";
 import FilterBar from "../filter-bar/filter-bar";
@@ -40,7 +37,7 @@ const CountryCodePicker = ({
         style={Style.item}
         onPress={() => {
           setSelectedCountry(item), setIsOpen(false);
-          onPickedCode("+" + item.callingCodes[0].toString());
+          onPickedCode("+" + item.callingCodes[0].toString(), item.name);
         }}
       >
         <SvgUri
@@ -64,9 +61,15 @@ const CountryCodePicker = ({
         style={{...Style.container, ...pickerStyle}}
       >
         {isOpen ? (
-          <DirectionUp width={20} height={20} />
+          <Image
+            style={{width: 20, height: 20}}
+            source={require("../assets/images/direction-up-white.png")}
+          />
         ) : (
-          <DirectionDown width={20} height={20} />
+          <Image
+            style={{width: 20, height: 20}}
+            source={require("../assets/images/direction-down-white.png")}
+          />
         )}
 
         <View style={Style.svg}>
@@ -87,7 +90,11 @@ const CountryCodePicker = ({
         <TouchableWithoutFeedback onPress={() => setIsOpen(false)}>
           <View style={{...Style.modalBack}}>
             <View style={{...Style.modal, ...modalStyle}}>
-              <Close width={20} height={20} />
+              <Image
+                style={{width: 20, height: 20}}
+                source={require("../assets/images/closeIconWhite.png")}
+              />
+
               <Spacer size={16} />
               <FilterBar
                 color={filterBarColor}

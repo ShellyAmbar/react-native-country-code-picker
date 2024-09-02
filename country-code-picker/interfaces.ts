@@ -4,7 +4,7 @@ type CountryCodePickerProps = {
   pickerStyle?: ViewStyle;
   modalStyle?: ViewStyle;
   textStyle?: TextStyle;
-  onPickedCode: (code: string) => void;
+  onPickedCode: (code: string, name: string) => void;
   filterBarColor?: string;
 };
 

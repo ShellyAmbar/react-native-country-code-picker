@@ -1,7 +1,6 @@
 import React from "react";
 import createStyle from "./filter-bar.styles";
-import {TextInput, TouchableOpacity, View} from "react-native";
-import Delete from "../assets/images/closeIconWhite.svg";
+import {TextInput, TouchableOpacity, View, Image} from "react-native";
 import FilterBarProps from "./interfaces";
 import useSearchBar from "./hooks/useSearchBar";
 const FilterBar = ({
@@ -23,7 +22,10 @@ const FilterBar = ({
             }}
             style={style.delete_icon}
           >
-            <Delete width={14} height={14} />
+            <Image
+              style={{width: 24, height: 24}}
+              source={require("../assets/images/closeIconWhite.png")}
+            />
           </TouchableOpacity>
         )}
         <TextInput
