@@ -73,18 +73,22 @@ const CountryCodePicker = ({
           />
         )}
 
-        <View style={Style.svg}>
-          <SvgUri
-            viewBox="0 0 1000 500"
-            uri={selectedCountry.flag}
-            width={30}
-            height={30}
-            style={{}}
-          />
-        </View>
-        <Text style={{...Style.text, ...textStyle}}>
-          {selectedCountry.alpha2Code}
-        </Text>
+        {selectedCountry && (
+          <>
+            <View style={Style.svg}>
+              <SvgUri
+                viewBox="0 0 1000 500"
+                uri={selectedCountry.flag}
+                width={30}
+                height={30}
+                style={{}}
+              />
+            </View>
+            <Text style={{...Style.text, ...textStyle}}>
+              {selectedCountry.alpha2Code}
+            </Text>
+          </>
+        )}
       </TouchableOpacity>
 
       <Modal animationType="slide" transparent={true} visible={isOpen}>
