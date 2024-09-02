@@ -12,8 +12,12 @@ const FilterBar = ({
   const style = createStyle({color});
   const ref = useRef();
   useEffect(() => {
-    ref?.current?.focus();
-  }, []);
+    const time = setTimeout(() => ref.current?.focus(), 100);
+
+    return () => {
+      clearTimeout(time);
+    };
+  }, [ref?.current]);
 
   return (
     <View style={style.container}>
