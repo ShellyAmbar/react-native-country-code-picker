@@ -72,21 +72,25 @@ const CountryCodePicker = ({
             source={require("../assets/images/direction-down-white.png")}
           />
         )}
+        <Spacer size={10} />
 
-        {selectedCountry && (
+        {selectedCountry ? (
           <>
-            <View style={Style.svg}>
-              <SvgUri
-                viewBox="0 0 1000 500"
-                uri={selectedCountry.flag}
-                width={30}
-                height={30}
-                style={{}}
-              />
-            </View>
+            <SvgUri
+              viewBox="0 0 1000 500"
+              uri={selectedCountry.flag}
+              width={30}
+              height={30}
+              style={{}}
+            />
+            <Spacer size={10} />
             <Text style={{...Style.text, ...textStyle}}>
               {selectedCountry.alpha2Code}
             </Text>
+          </>
+        ) : (
+          <>
+            <Text style={{...Style.text, ...textStyle}}>{"Select"}</Text>
           </>
         )}
       </TouchableOpacity>
