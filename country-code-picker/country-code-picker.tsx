@@ -4,7 +4,6 @@ import {
   TouchableOpacity,
   Image,
   Modal,
-  TouchableWithoutFeedback,
   FlatList,
 } from "react-native";
 import React from "react";
@@ -12,7 +11,7 @@ import {CountryCodePickerProps} from "./interfaces";
 import Style from "./country-code-picker.styles";
 import useCountryCodePicker from "./hooks/useCountryCodePicker";
 import {SvgUri} from "react-native-svg";
-import FilterBar from "../filter-bar/filter-bar";
+import FilterBar from "./filter-bar/filter-bar";
 import Spacer from "../spacer/spacer";
 const CountryCodePicker = ({
   pickerStyle,

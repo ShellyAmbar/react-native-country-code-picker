@@ -1,6 +1,6 @@
-import React, {useEffect, useRef} from "react";
+import React from "react";
 import createStyle from "./filter-bar.styles";
-import {TextInput, TouchableOpacity, View, Image, Keyboard} from "react-native";
+import {TextInput, TouchableOpacity, View, Image} from "react-native";
 import FilterBarProps from "./interfaces";
 import useSearchBar from "./hooks/useSearchBar";
 const FilterBar = ({
@@ -10,14 +10,6 @@ const FilterBar = ({
 }: FilterBarProps) => {
   const {searchTerm, setSearchTerm} = useSearchBar();
   const style = createStyle({color});
-  const ref = useRef();
-  useEffect(() => {
-    const time = setTimeout(() => ref.current?.focus(), 100);
-
-    return () => {
-      clearTimeout(time);
-    };
-  }, [ref?.current]);
 
   return (
     <View style={style.container}>
@@ -38,7 +30,6 @@ const FilterBar = ({
           </TouchableOpacity>
         )}
         <TextInput
-          ref={ref}
           cursorColor={"#FFF"}
           style={style.input}
           value={searchTerm}

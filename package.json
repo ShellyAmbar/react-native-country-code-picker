@@ -1,6 +1,6 @@
 {
   "name": "rn-country-code-picker-modal",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "react native country code picker with a modal, in typescript.",
   "main": "./country-code-picker/country-code-picker.tsx",
   "scripts": {
