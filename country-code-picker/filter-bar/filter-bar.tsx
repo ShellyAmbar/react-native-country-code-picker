@@ -3,6 +3,7 @@ import createStyle from "./filter-bar.styles";
 import {TextInput, TouchableOpacity, View, Image} from "react-native";
 import FilterBarProps from "./interfaces";
 import useSearchBar from "./hooks/useSearchBar";
+
 const FilterBar = ({
   onUpdateSearchTerm,
   onPressDelete,
@@ -25,7 +26,7 @@ const FilterBar = ({
           >
             <Image
               style={{width: 24, height: 24}}
-              source={require("../assets/images/closeIconWhite.png")}
+              source={require("../../assets/images/closeIconWhite.png")}
             />
           </TouchableOpacity>
         )}
