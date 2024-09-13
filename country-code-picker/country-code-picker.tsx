@@ -6,7 +6,7 @@ import {
   Modal,
   FlatList,
 } from "react-native";
-import React from "react";
+import React, {memo, useCallback} from "react";
 import {CountryCodePickerProps} from "./interfaces";
 import Style from "./country-code-picker.styles";
 import useCountryCodePicker from "./hooks/useCountryCodePicker";
@@ -31,12 +31,19 @@ const CountryCodePicker = ({
     setFilteredCountriesData,
   } = useCountryCodePicker(defaultCountryName);
 
-  const renderItem = (item) => {
+  const onPressItem = useCallback(
+    (item) => {
+      setSelectedCountry(item), setIsOpen(false);
+    },
+    [setSelectedCountry, setIsOpen]
+  );
+
+  const renderItem = ({item, onPress}) => {
     return (
       <TouchableOpacity
         style={Style.item}
         onPress={() => {
-          setSelectedCountry(item), setIsOpen(false);
+          onPress();
           onPickedCode("+" + item.callingCodes[0].toString(), item.name);
         }}
       >
@@ -123,7 +130,9 @@ const CountryCodePicker = ({
             {filteredCountriesData?.length > 0 && (
               <FlatList
                 data={filteredCountriesData}
-                renderItem={(item) => renderItem(item.item)}
+                renderItem={({item, index}) =>
+                  renderItem({item: item, onPress: onPressItem})
+                }
                 keyExtractor={(item) => item.flag}
                 style={Style.list}
               />
