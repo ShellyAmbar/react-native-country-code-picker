@@ -26,7 +26,7 @@ const CountryCodePicker = ({
     setIsOpen,
     selectedCountry,
     setSelectedCountry,
-    countriesData,
+    Data: countriesData,
     filteredCountriesData,
     setFilteredCountriesData,
   } = useCountryCodePicker(defaultCountryName);
@@ -120,12 +120,14 @@ const CountryCodePicker = ({
               }}
             />
             <Spacer size={8} />
-            <FlatList
-              data={filteredCountriesData}
-              renderItem={(item) => renderItem(item.item)}
-              keyExtractor={(item) => item.flag}
-              style={Style.list}
-            />
+            {filteredCountriesData?.length > 0 && (
+              <FlatList
+                data={filteredCountriesData}
+                renderItem={(item) => renderItem(item.item)}
+                keyExtractor={(item) => item.flag}
+                style={Style.list}
+              />
+            )}
           </View>
         </View>
       </Modal>

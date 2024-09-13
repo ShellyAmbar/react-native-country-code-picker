@@ -9,7 +9,7 @@ const FilterBar = ({
   onPressDelete,
   color,
 }: FilterBarProps) => {
-  const {searchTerm, setSearchTerm} = useSearchBar();
+  const {searchTerm, setSearchTerm} = useSearchBar(onUpdateSearchTerm);
   const style = createStyle({color});
 
   return (
@@ -19,7 +19,7 @@ const FilterBar = ({
           <TouchableOpacity
             onPress={() => {
               onPressDelete();
-              onUpdateSearchTerm("");
+
               setSearchTerm("");
             }}
             style={style.delete_icon}
@@ -34,13 +34,8 @@ const FilterBar = ({
           cursorColor={"#FFF"}
           style={style.input}
           value={searchTerm}
-          onEndEditing={(v) => {
-            setSearchTerm(v.nativeEvent.text);
-            onUpdateSearchTerm(v.nativeEvent.text);
-          }}
           onChangeText={(v) => {
             setSearchTerm(v);
-            onUpdateSearchTerm(v);
           }}
         />
       </View>

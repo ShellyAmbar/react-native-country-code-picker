@@ -1,7 +1,16 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import useDebounce from "./useDebounce";
 
-const useSearchBar = () => {
+const useSearchBar = (onUpdateSearchTerm) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const debounce = useDebounce({text: searchTerm, delay: 500});
+
+  useEffect(() => {
+    if (debounce?.length > 0) {
+      onUpdateSearchTerm(debounce);
+    }
+  }, [debounce]);
+
   return {
     searchTerm,
     setSearchTerm,
