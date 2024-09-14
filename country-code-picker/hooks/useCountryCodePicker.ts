@@ -5,7 +5,7 @@ import Data from "../data";
 const useCountryCodePicker = (defaultCountryName?: string) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [filteredCountriesData, setFilteredCountriesData] = useState(Data);
+  const [filteredCountriesData, setFilteredCountriesData] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState<Country | null>();
   useEffect(() => {
     if (defaultCountryName && defaultCountryName?.length > 0) {

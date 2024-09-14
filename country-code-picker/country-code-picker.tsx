@@ -5,6 +5,7 @@ import {
   Image,
   Modal,
   FlatList,
+  VirtualizedList,
 } from "react-native";
 import React, {memo, useCallback} from "react";
 import {CountryCodePickerProps} from "./interfaces";
@@ -44,13 +45,13 @@ const CountryCodePicker = ({
           onPress(item);
         }}
       >
-        <SvgUri
+        {/* <SvgUri
           viewBox="0 0 1000 500"
           uri={item.flag}
           width={30}
           height={30}
           style={Style.itemImage}
-        />
+        /> */}
         <Text style={{...Style.text, ...textStyle}}>{item.name}</Text>
       </TouchableOpacity>
     );
@@ -125,17 +126,20 @@ const CountryCodePicker = ({
             />
             <Spacer size={8} />
             {filteredCountriesData?.length > 0 && (
-              <FlatList
+              <VirtualizedList
+                getItemCount={(data) => data.length}
+                getItem={(data, index) => data[index]}
                 initialNumToRender={10}
                 maxToRenderPerBatch={10}
                 onEndReachedThreshold={0.5}
                 scrollEventThrottle={16}
-                windowSize={5}
+                windowSize={10}
                 data={filteredCountriesData}
+                removeClippedSubviews={true}
                 renderItem={({item, index}) => (
                   <Item item={item} onPress={onPressItem} />
                 )}
-                keyExtractor={(item) => item.flag}
+                keyExtractor={(item, index) => index.toString()}
                 style={Style.list}
                 getItemLayout={(data, index) => ({
                   length: 16,
