@@ -31,6 +31,7 @@ const FilterBar = ({
           </TouchableOpacity>
         )}
         <TextInput
+          focusable
           cursorColor={"#FFF"}
           style={style.input}
           value={searchTerm}

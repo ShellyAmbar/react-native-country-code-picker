@@ -31,20 +31,17 @@ const CountryCodePicker = ({
     setFilteredCountriesData,
   } = useCountryCodePicker(defaultCountryName);
 
-  const onPressItem = useCallback(
-    (item) => {
-      setSelectedCountry(item), setIsOpen(false);
-    },
-    [setSelectedCountry, setIsOpen]
-  );
+  const onPressItem = useCallback((item) => {
+    setSelectedCountry(item), setIsOpen(false);
+    onPickedCode("+" + item.callingCodes[0].toString(), item.name);
+  }, []);
 
-  const renderItem = ({item, onPress}) => {
+  const Item = memo(({item, onPress}) => {
     return (
       <TouchableOpacity
         style={Style.item}
         onPress={() => {
-          onPress();
-          onPickedCode("+" + item.callingCodes[0].toString(), item.name);
+          onPress(item);
         }}
       >
         <SvgUri
@@ -57,7 +54,7 @@ const CountryCodePicker = ({
         <Text style={{...Style.text, ...textStyle}}>{item.name}</Text>
       </TouchableOpacity>
     );
-  };
+  });
   return (
     <>
       <TouchableOpacity
@@ -129,12 +126,22 @@ const CountryCodePicker = ({
             <Spacer size={8} />
             {filteredCountriesData?.length > 0 && (
               <FlatList
+                initialNumToRender={10}
+                maxToRenderPerBatch={10}
+                onEndReachedThreshold={0.5}
+                scrollEventThrottle={16}
+                windowSize={5}
                 data={filteredCountriesData}
-                renderItem={({item, index}) =>
-                  renderItem({item: item, onPress: onPressItem})
-                }
+                renderItem={({item, index}) => (
+                  <Item item={item} onPress={onPressItem} />
+                )}
                 keyExtractor={(item) => item.flag}
                 style={Style.list}
+                getItemLayout={(data, index) => ({
+                  length: 16,
+                  offset: 16 * index,
+                  index,
+                })}
               />
             )}
           </View>

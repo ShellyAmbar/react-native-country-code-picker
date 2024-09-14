@@ -12,14 +12,14 @@ const createStyle = ({color = "#FFF"}: {color?: string}) =>
       borderColor: color,
       borderWidth: 1,
       width: "100%",
-      paddingVertical: 5,
+
       alignItems: "flex-start",
       justifyContent: "center",
     },
     input: {
       alignItems: "center",
       width: "100%",
-      paddingStart: 35,
+      paddingHorizontal: 10,
       zIndex: 0,
       color: color,
     },
