@@ -4,7 +4,6 @@ import {
   TouchableOpacity,
   Image,
   Modal,
-  FlatList,
   VirtualizedList,
 } from "react-native";
 import React, {memo, useCallback} from "react";
@@ -14,6 +13,7 @@ import useCountryCodePicker from "./hooks/useCountryCodePicker";
 import {SvgUri} from "react-native-svg";
 import FilterBar from "./filter-bar/filter-bar";
 import Spacer from "../spacer/spacer";
+import Entypo from "react-native-vector-icons/Entypo";
 const CountryCodePicker = ({
   pickerStyle,
   modalStyle,
@@ -66,15 +66,9 @@ const CountryCodePicker = ({
         style={{...Style.container, ...pickerStyle}}
       >
         {isOpen ? (
-          <Image
-            style={{width: 20, height: 20}}
-            source={require("../assets/images/direction-up-white.png")}
-          />
+          <Entypo name="chevron-small-up" size={22} color={"#FFF"} />
         ) : (
-          <Image
-            style={{width: 20, height: 20}}
-            source={require("../assets/images/direction-down-white.png")}
-          />
+          <Entypo name="chevron-small-down" size={22} color={"#FFF"} />
         )}
         <Spacer size={10} isVertical={false} />
         {selectedCountry ? (
