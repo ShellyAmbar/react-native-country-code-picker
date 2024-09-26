@@ -20,6 +20,7 @@ const createStyle = ({color = "#FFF"}: {color?: string}) =>
       alignItems: "center",
       width: "100%",
       paddingHorizontal: 10,
+      paddingVertical: 8,
       zIndex: 0,
       color: color,
     },
